@@ -4,10 +4,26 @@
         <p>
             <label>Firstname</label>
             <input type="text" name="first_name" id="first_name" formControlName="firstName">
+            <span *ngIf="!firstname?.valid && (firstname?.touched==true || firstname?.dirty==true)">
+                <span *ngIf="firstname?.errors?.['required']">
+                    first name required
+                </span>
+                <span *ngIf="firstname?.errors?.['minlength']">
+                    min length 7 
+                </span>
+            </span>
         </p>
         <p>
             <label>Lastname</label>
             <input type="text" name="last_name" id="last_name" formControlName="lastNmae">
+            <span *ngIf="!lastname?.valid && (lastname?.touched==true || lastname?.dirty==true)">
+                <span *ngIf="lastname?.errors?.['required']">
+                    last name required
+                </span>
+                <span *ngIf="lastname?.errors?.['pattern']">
+                    only char
+                </span>
+            </span>
         </p>
         <p>
             <label>Email</label>
@@ -21,10 +37,17 @@
             <label>Gender</label>
             <input type="radio" name="gender" id="gender" value="male" formControlName="gender">Male 
             <input type="radio" name="gender" id="gender" value="female" formControlName="gender">Female
+
         </p>
         <p>
             <label>isMarried</label>
             <input type="checkbox" name="is_married" id="is_married" formControlName="isMarried">
+            
+            <span *ngIf="!ismarried?.valid && (ismarried?.touched==true || ismarried?.dirty==true)">
+                <span *ngIf="ismarried?.errors?.['required']">
+                    isMArried required
+                </span>
+            </span>
         </p>
         <p>
             <label>Contry</label>

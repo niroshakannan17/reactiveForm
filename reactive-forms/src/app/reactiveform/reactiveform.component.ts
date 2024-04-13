@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { FormControl, FormGroup } from '@angular/forms';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-reactiveform',
@@ -16,19 +16,28 @@ export class ReactiveformComponent {
 
   ]
  contactForm = new FormGroup({
-  firstName: new FormControl(),
-  lastNmae: new FormControl(),
+  firstName: new FormControl("",[Validators.required,Validators.minLength(7)]),
+  lastNmae: new FormControl("",[Validators.required,Validators.pattern("^[a-zA-Z]+$")]),
   email: new FormControl(),
   phoneNumber : new FormControl(),
   gender: new FormControl(),
-  isMarried : new FormControl(),
+  isMarried : new FormControl("",[Validators.requiredTrue]),
   country: new FormControl()
  })
 
  onSubmit(){
-  console.log(this.contactForm.value);
+  console.log(this.contactForm);
  }
 
+ get firstname(){
+  return this.contactForm.get("firstName");
+ }
+ get lastname(){
+  return this.contactForm.get("lastNmae");
+ }
+ get ismarried(){
+  return this.contactForm.get("isMarried");
+ }
 }
 
 class Contry{
