@@ -22,7 +22,10 @@ export class ReactiveformComponent {
   phoneNumber : new FormControl(),
   gender: new FormControl(),
   isMarried : new FormControl("",[Validators.requiredTrue]),
-  country: new FormControl()
+  country: new FormControl(),
+  address: new FormGroup({
+    city: new FormControl("",[Validators.required])
+  })
  })
 
  onSubmit(){
@@ -37,6 +40,9 @@ export class ReactiveformComponent {
  }
  get ismarried(){
   return this.contactForm.get("isMarried");
+ }
+ get city(){
+  return this.contactForm.get("address")?.get("city");
  }
 }
 

@@ -56,6 +56,17 @@
                 <option [ngValue]="item.id" *ngFor="let item of contryData">{{item.name}}</option>
             </select>
         </p>
+        <div formGroupName="address">
+            <p>
+                <label>City</label>
+                <input type="text" name="city" id="city" formControlName="city">
+                <span *ngIf="!city?.valid && (city?.touched==true || city?.dirty==true)">
+                    <span *ngIf="city?.errors?.['required']">
+                        city name required
+                    </span>
+                </span>
+            </p>
+        </div>
         <button type="submit">Submit</button>
 
     </form>
