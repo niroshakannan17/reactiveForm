@@ -1,0 +1,39 @@
+
+<div class="container">
+    <form [formGroup]="contactForm" (submit)="onSubmit()">
+        <p>
+            <label>Firstname</label>
+            <input type="text" name="first_name" id="first_name" formControlName="firstName">
+        </p>
+        <p>
+            <label>Lastname</label>
+            <input type="text" name="last_name" id="last_name" formControlName="lastNmae">
+        </p>
+        <p>
+            <label>Email</label>
+            <input type="text" name="email" id="email" formControlName="email">
+        </p>
+        <p>
+            <label>Phone Number</label>
+            <input type="text" name="phone_number" id="phone_number" formControlName="phoneNumber">
+        </p>
+        <p>
+            <label>Gender</label>
+            <input type="radio" name="gender" id="gender" value="male" formControlName="gender">Male 
+            <input type="radio" name="gender" id="gender" value="female" formControlName="gender">Female
+        </p>
+        <p>
+            <label>isMarried</label>
+            <input type="checkbox" name="is_married" id="is_married" formControlName="isMarried">
+        </p>
+        <p>
+            <label>Contry</label>
+            <select name="country" id="country" formControlName="country">
+                <option value="">select</option>
+                <option [ngValue]="item.id" *ngFor="let item of contryData">{{item.name}}</option>
+            </select>
+        </p>
+        <button type="submit">Submit</button>
+
+    </form>
+</div>
